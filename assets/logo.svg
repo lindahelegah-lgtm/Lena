@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" role="img" aria-label="Building Ideas Limited logo">
+  <defs>
+    <clipPath id="biCircle"><circle cx="110" cy="110" r="100"/></clipPath>
+  </defs>
+  <!-- Navy disc -->
+  <circle cx="110" cy="110" r="100" fill="#16225A"/>
+  <g clip-path="url(#biCircle)" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Compass / divider legs forming an A -->
+    <path d="M110 38 L58 168" stroke-width="14"/>
+    <path d="M110 38 L162 168" stroke-width="14"/>
+    <!-- Inner stylised stroke (the thin leg of the original mark) -->
+    <path d="M120 52 L92 150" stroke-width="6" opacity="0.9"/>
+    <!-- Crossbar of the A -->
+    <path d="M80 124 L140 124" stroke-width="13"/>
+    <!-- Baseline arc -->
+    <path d="M48 176 Q110 196 172 176" stroke-width="13"/>
+  </g>
+  <!-- Hinge / level bubble -->
+  <circle cx="110" cy="64" r="13" fill="#ffffff"/>
+  <circle cx="110" cy="64" r="6" fill="#16225A"/>
+</svg>

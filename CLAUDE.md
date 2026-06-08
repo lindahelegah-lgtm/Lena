@@ -3,60 +3,73 @@
 This file provides guidance to Claude Code (and other AI assistants) when working
 with code in this repository.
 
-> **Status: Scaffold.** As of the last update, this repository was empty (no
-> source code committed). The sections below are a template to be filled in as the
-> codebase grows. When real code lands, replace the placeholder notes with concrete,
-> verified details (commands, paths, conventions) and remove this status banner.
-
 ## Project Overview
 
-`Lena` — _describe the project's purpose, what it does, and who it's for here._
+`Lena` hosts the **Building Ideas Limited** marketing website — a multi-page site for
+a Ghana-based construction company specialising in Project Management, Design & Build,
+and General & Maintenance Construction.
 
-- **Language / runtime:** _TBD_
-- **Package manager / build tool:** _TBD_
-- **Entry point:** _TBD_
+- **Language / runtime:** Static HTML5, CSS3, vanilla JavaScript (ES5-safe, no build step)
+- **Package manager / build tool:** None — zero dependencies, no bundler
+- **Entry point:** `index.html`
+- **Brand:** deep navy `#16225A` (from the logo) + amber `#F5A623` accent;
+  fonts Lexend (headings) + Source Sans 3 (body), loaded from Google Fonts with
+  system-font fallbacks so the site degrades gracefully offline.
 
 ## Repository Structure
 
-_Document the top-level layout once files exist, e.g.:_
-
 ```
 .
-├── src/        # application source
-├── tests/      # test suite
-└── ...
+├── index.html        # Home (hero, clients slider, services, projects, CTA)
+├── services.html     # Services + sectors + process
+├── projects.html     # Case Studies (filterable project grid)
+├── about.html        # Company story, mission, team, capacity
+├── contact.html      # Contact details + strategy-session form
+├── css/styles.css    # Single hand-crafted design-system stylesheet
+├── js/main.js        # Nav, logo marquee, filters, scroll reveals, form
+└── assets/           # logo.svg, favicon.svg
 ```
+
+Header and footer markup is duplicated across pages (intentionally — keeps the site
+buildless and viewable directly via `file://`). When editing nav/footer, update every
+HTML file consistently.
 
 ## Development Workflow
 
 ### Setup
 
+No install required. Serve the folder with any static server:
+
 ```bash
-# Install dependencies (update once a package manager is chosen)
-# e.g. npm install / pip install -r requirements.txt / go mod download
+python3 -m http.server 8000      # then open http://127.0.0.1:8000
+# or: npx serve .
 ```
+
+Opening `index.html` directly in a browser also works.
 
 ### Common Commands
 
-| Task   | Command   |
-| ------ | --------- |
-| Build  | _TBD_     |
-| Run    | _TBD_     |
-| Test   | _TBD_     |
-| Lint   | _TBD_     |
-| Format | _TBD_     |
-
-_Update this table with the real commands. Prefer documenting the exact invocation
-(including any required flags or env vars) so they can be run without guesswork._
+| Task       | Command                                                        |
+| ---------- | ------------------------------------------------------------- |
+| Run (dev)  | `python3 -m http.server 8000`                                |
+| Screenshot | Playwright via Node (see git history) against the local server |
+| Build      | _None — static files are the deliverable_                     |
+| Test       | _None yet (manual/visual QA)_                                 |
+| Lint       | _None configured (Prettier available globally if desired)_   |
 
 ## Coding Conventions
 
-_Capture conventions the codebase actually follows, for example:_
-
-- Code style / formatter and how it's enforced
-- Naming conventions
-- Directory/module organization rules
-- Testing expectations for new code
+- **No frameworks / no build:** keep it dependency-free and directly openable.
+- **CSS:** one stylesheet driven by CSS custom properties (design tokens in `:root`).
+  Reuse existing utility/component classes (`.btn`, `.card`, `.section`, `.proj-card`,
+  `.marquee`, etc.) before adding new CSS.
+- **JS:** vanilla, framework-free, defensively guarded (feature-detect before use).
+  Scroll-reveal is a progressive enhancement gated behind the `html.js` class so
+  content stays visible without JavaScript.
+- **Accessibility:** maintain 4.5:1 text contrast, visible focus states, semantic
+  landmarks, and `prefers-reduced-motion` handling (already in `styles.css`).
+- **Company facts** (projects, values, contacts, team) come from the company profile;
+  verify against source material before changing figures.
 
 ## Tooling & Skills
 
