@@ -123,7 +123,7 @@ ul { margin: 0; padding: 0; }
 }
 .nav { display: flex; align-items: center; justify-content: space-between; height: var(--header-h); }
 .brand { display: flex; align-items: center; gap: 12px; }
-.brand img { width: 44px; height: 44px; }
+.brand img { width: 50px; height: 50px; border-radius: 50%; background: #fff; box-shadow: 0 1px 4px rgba(16,26,69,.18); }
 .brand-text { display: flex; flex-direction: column; line-height: 1.05; }
 .brand-name { font-family: var(--font-head); font-weight: 700; color: var(--navy-900); font-size: 1.12rem; letter-spacing: -.01em; }
 .brand-tag { font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--amber-600); font-weight: 600; }
